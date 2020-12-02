@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sPrinter"   class="com.example.StringPrinter" />
+	<bean id="cPrinter"  class="com.example.ConsolePrinter" />
+
+	<bean id="hello" class="com.example.Hello">
+	
+		<!--  생성자 사용. -->
+		<constructor-arg  name = "name"  type = "String"  value = "Spring!" />
+		<constructor-arg  ref = "sPrinter"  />		<!--  Hello클래스의 두번째 멤버변수를 sPrinter참조해서 세팅. -->
+	
+		<!--  setter 사용. -->		
+		<!-- <property name="name" value="Spring!" />	 Hello클래스의 name변수 
+		<property name="printer" ref="sPrinter" />		 setPrinter(sPrinter); 	여기서 sPrinter = new StringPrinter(); -->
+	</bean>
+	
+	
+
+</beans>
