@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Users">
+	<typeAlias alias="userVO" type="com.example.vo.UserVO" />
+	<resultMap id="result" class="userVO">
+		<result property="userId" column="userid" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="city" column="city" />
+	</resultMap>
+	<select id="useResultMap" resultMap="result">
+		SELECT * FROM users WHERE
+		userid=#id#
+	</select>
+
+	<insert id="insert" parameterClass="userVO">
+		INSERT INTO USERS(userid,
+		name, gender, city)
+		VALUES (#userId#, #name#, #gender#, #city#)
+	</insert>
+	<select id="getAll" resultClass="userVO">
+		SELECT * FROM USERS
+	</select>
+
+	<update id="update" parameterClass="userVO">
+		UPDATE USERS
+		SET name =
+		#name#, gender = #gender#, city = #city#
+		WHERE userId = #userId#
+	</update>
+
+	<delete id="delete" parameterClass="String">
+		DELETE FROM USERS WHERE userid = #id#
+	</delete>
+</sqlMap>
